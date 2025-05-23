@@ -11,12 +11,11 @@ public class Personnage {
 
     // Utilisation d'IntegerProperty pour les positions
     private IntegerProperty xProperty = new SimpleIntegerProperty(50);
-    private IntegerProperty yProperty = new SimpleIntegerProperty(235);
+    private IntegerProperty yProperty = new SimpleIntegerProperty(140);
 
     private Terrain terrain;
 
-    // Position initiale au sol
-    private final int SOL_Y = 144;
+    public final int GROUND_LEVEL = Terrain.TAILLE_TUILES * ((this.getY()/16+1));
 
     // Limites de la map
     private final int LIMITE_X_MIN = 0;
@@ -41,6 +40,8 @@ public class Personnage {
 
     public Personnage(Terrain terrain) {
         this.terrain = terrain;
+        this.xProperty = xProperty();
+        this.yProperty = yProperty();
     }
 
     public int getX() {
@@ -49,6 +50,14 @@ public class Personnage {
 
     public int getY() {
         return yProperty.get();
+    }
+
+    public void setxProperty(int xProperty) {
+        this.xProperty.set(xProperty);
+    }
+
+    public void setyProperty(int yProperty) {
+        this.yProperty.set(yProperty);
     }
 
     public IntegerProperty xProperty() {
@@ -116,34 +125,34 @@ public class Personnage {
      * Applique la physique (gravité) au personnage et gère les collisions verticales
      */
     private void appliquerPhysique() {
-        // Appliquer la gravité à la vitesse verticale
-        velociteY += GRAVITE;
+       // Appliquer la gravité à la vitesse verticale
+       velociteY += GRAVITE;
 
         // Mettre à jour la position Y avec la vitesse
-        int newY = yProperty.get() + (int)velociteY;
+       int newY = yProperty.get() + (int)velociteY;
 
-        // Vérifier les collisions verticales
-        if (newY >= SOL_Y) {
-            // Collision avec le sol
-            newY = SOL_Y;
-            velociteY = 0;
-            auSol = true;
-        } else if (newY <= LIMITE_Y_MIN) {
+       // Vérifier les collisions verticales
+        if (newY >= GROUND_LEVEL) {
+           // Collision avec le sol
+            newY = GROUND_LEVEL;
+           velociteY = 0;
+           auSol = true;
+       } else if (newY <= LIMITE_Y_MIN) {
             // Collision avec le plafond
-            newY = LIMITE_Y_MIN;
+           newY = LIMITE_Y_MIN;
             velociteY = 0;
-        }
+     }
 
-        // Vérifier les limites verticales de la map
-        if (newY <= LIMITE_Y_MAX && newY >= LIMITE_Y_MIN) {
-            yProperty.set(newY);
-        }
-
+    // Vérifier les limites verticales de la map
+      if (newY <= LIMITE_Y_MAX && newY >= LIMITE_Y_MIN) {
+          yProperty.set(newY);
     }
 
-    /**
-     * @return Vrai si le personnage est en l'air (en train de sauter)
-     */
+  }
+
+        /**
+         * @return Vrai si le personnage est en l'air (en train de sauter)
+         */
     public boolean isEnAir() {
         return !auSol;
     }

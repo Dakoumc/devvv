@@ -20,3 +20,4 @@ public class LancementJeu_EternityCrystals extends Application {
         launch();
     }
 }
+

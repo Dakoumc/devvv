@@ -23,7 +23,7 @@ public class Terrain {
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
             {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1},
-            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 3, 1, 1, 1},
+            {1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1},
             {3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1},
             {2, 2, 2, 1, 1, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2, 2},
             {3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3, 3},
@@ -51,9 +51,19 @@ Ajout test pour faire marcher les collisions
         return this.codesTuiles.length;
     }
 
+    public int largeurEnPixels() {
+        return this.largeur()*16;
+    }
+
     public int hauteur ()  {
         return this.codesTuiles[0].length;
     }
+
+    public int hauteurEnPixels() {
+        return this.hauteur()*16;
+    }
+
+
 
     public int codeTuile (int i, int j) {
         return this.codesTuiles[i][j];
@@ -61,9 +71,13 @@ Ajout test pour faire marcher les collisions
 
 
     public boolean estAccessible(int x, int y) {
-
-        return this.codesTuiles[x / 16][y / 16] == 1;
+        int ligne = y/16;
+        int colonne = x/16;
+        System.out.println("colonne"+colonne);
+        System.out.println("ligne"+ligne);
+        System.out.println(this.codesTuiles[ligne][colonne]);
+        return this.codesTuiles[ligne][colonne] == 1;
     }
 
 
-}   
+}
