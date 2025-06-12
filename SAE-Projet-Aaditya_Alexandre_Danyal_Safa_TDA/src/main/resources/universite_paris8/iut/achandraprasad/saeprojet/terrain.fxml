@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.control.Label?>
+
+<BorderPane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="universite_paris8.iut.achandraprasad.saeprojet.controleur.Controleur">
+    <center>
+        <Pane fx:id="PanePrincipal">
+            <children>
+                <!-- NOUVEAU: Pane camera qui contient tout -->
+                <Pane fx:id="camera">
+                    <children>
+                        <TilePane fx:id="tilepane" />
+                    </children>
+                </Pane>
+            </children>
+        </Pane>
+    </center>
+    <top>
+        <Label text="Eternity Crystals" BorderPane.alignment="CENTER" />
+    </top>
+   <right>
+      <HBox fx:id="vie" prefHeight="100.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </right>
+</BorderPane>
