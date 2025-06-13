@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.*?>
+<?import javafx.scene.layout.*?>
+
+<Pane xmlns="http://javafx.com/javafx/8.0.40" xmlns:fx="http://javafx.com/fxml/1" fx:controller="universite_paris8.iut.achandraprasad.saeprojet.controleur.InventaireControleur">
+    <children>
+        <!-- Fond de l'inventaire -->
+        <Pane fx:id="fondInventaire" layoutX="300" layoutY="200" prefHeight="200" prefWidth="400" style="-fx-background-color: rgba(0, 0, 0, 0.8); -fx-border-color: white; -fx-border-width: 2;">
+            <children>
+                <Label layoutX="150" layoutY="10" text="INVENTAIRE" textFill="WHITE" />
+
+                <!-- Slot 1 - Terre -->
+                <Pane fx:id="slot1" layoutX="50" layoutY="50" onMouseClicked="#selectionnerSlot1" prefHeight="60" prefWidth="60" style="-fx-border-color: white; -fx-border-width: 2;">
+                    <children>
+                        <ImageView fx:id="image1" fitHeight="50" fitWidth="50" layoutX="5" layoutY="5" />
+                        <Label fx:id="quantite1" layoutX="40" layoutY="40" text="0" textFill="WHITE" />
+                    </children>
+                </Pane>
+
+                <!-- Slot 2 - Herbe -->
+                <Pane fx:id="slot2" layoutX="150" layoutY="50" onMouseClicked="#selectionnerSlot2" prefHeight="60" prefWidth="60" style="-fx-border-color: white; -fx-border-width: 2;">
+                    <children>
+                        <ImageView fx:id="image2" fitHeight="50" fitWidth="50" layoutX="5" layoutY="5" />
+                        <Label fx:id="quantite2" layoutX="40" layoutY="40" text="0" textFill="WHITE" />
+                    </children>
+                </Pane>
+
+                <!-- Slot 3 - Pierre -->
+                <Pane fx:id="slot3" layoutX="250" layoutY="50" onMouseClicked="#selectionnerSlot3" prefHeight="60" prefWidth="60" style="-fx-border-color: white; -fx-border-width: 2;">
+                    <children>
+                        <ImageView fx:id="image3" fitHeight="50" fitWidth="50" layoutX="5" layoutY="5" />
+                        <Label fx:id="quantite3" layoutX="40" layoutY="40" text="0" textFill="WHITE" />
+                    </children>
+                </Pane>
+
+                <!-- Info sélection -->
+                <Label fx:id="labelSelection" layoutX="50" layoutY="150" text="Sélectionné: Terre" textFill="WHITE" />
+            </children>
+        </Pane>
+    </children>
+</Pane>
